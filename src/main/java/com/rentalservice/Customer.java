@@ -31,11 +31,11 @@ public class Customer {
         String result = "Rental Record for " + name + "\n";
         Iterator<Rental> it = rentalList.iterator();
         while (it.hasNext()) {
-            double thisAmount = 0;
+
             Rental each = it.next();
 
             //determine amounts for each line
-            thisAmount = amountFor(each);
+
 
             //add Frequent Renterpoints
             frequentRenterPoints++;
@@ -44,8 +44,8 @@ public class Customer {
                 frequentRenterPoints++;
 
             //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + thisAmount + "\n";
-            totalAmount += thisAmount;
+            result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge() + "\n";
+            totalAmount += each.getCharge();
         }
         //add Footer lines
         result += "Amount owed is " + totalAmount + "\n";
@@ -53,25 +53,4 @@ public class Customer {
         return result;
     }
 
-    private double amountFor(Rental rental){
-        double result= 0;
-        switch (rental.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                result += 2;
-                if (rental.getDaysRented() > 2) {
-                    result += (rental.getDaysRented() - 2) * 1.5;
-                    break;
-                }
-            case Movie.NEW_RELEASE:
-                result += rental.getDaysRented() * 3;
-                break;
-            case Movie.CHILDREN:
-                result += 1.5;
-                if (rental.getDaysRented() > 3) {
-                    result += (rental.getDaysRented() - 3) * 1.5;
-                    break;
-                }
-        }
-        return result;
-    }
 }

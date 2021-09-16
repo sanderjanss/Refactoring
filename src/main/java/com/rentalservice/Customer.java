@@ -28,7 +28,7 @@ public class Customer {
     public String statement() {
         String result = "Rental Record for " + name + "\n";
         for (Rental each : rentalList) {
-            //show figures for this rentals
+            //show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge() + "\n";
         }
         //add Footer lines

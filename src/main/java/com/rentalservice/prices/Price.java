@@ -1,7 +1,5 @@
 package com.rentalservice.prices;
 
-import com.rentalservice.Movie;
-
 public abstract class Price {
     public abstract int getPriceCode();
 

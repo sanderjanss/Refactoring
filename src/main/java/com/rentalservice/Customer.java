@@ -27,11 +27,7 @@ public class Customer {
 
     public String statement() {
         String result = "Rental Record for " + name + "\n";
-        Iterator<Rental> it = rentalList.iterator();
-        while (it.hasNext()) {
-
-            Rental each = it.next();
-
+        for (Rental each : rentalList) {
             //show figures for this rental
             result += "\t" + each.getMovie().getTitle() + "\t" + each.getCharge() + "\n";
         }
@@ -43,20 +39,16 @@ public class Customer {
 
     private int getTotalFrequentRenterPoints(){
         int result = 0;
-        Iterator<Rental> it = rentalList.iterator();
-        while (it.hasNext()) {
-            Rental each = it.next();
-            result += each.getFrequentRenterPoints();
+        for (Rental rental : rentalList          ) {
+            result += rental.getFrequentRenterPoints();
         }
         return result;
     }
 
     private double getTotalCharge() {
         double result = 0;
-        Iterator<Rental> it = rentalList.iterator();
-        while (it.hasNext()) {
-            Rental each = it.next();
-            result += each.getCharge();
+        for (Rental rental : rentalList          ) {
+            result += rental.getCharge();
         }
         return result;
     }
